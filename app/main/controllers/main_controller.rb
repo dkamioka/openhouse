@@ -13,7 +13,6 @@ class MainController < Volt::ModelController
   def add_gift
     _gifts << { name: _new_gift }
     _new_gift = ""
-    
   end
 
   def remove_gift(gift)
