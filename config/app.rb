@@ -18,7 +18,8 @@ config.db_driver = 'mongo'
 config.db_name = (config.app_name + '_' + Volt.env.to_s)
 
 if ENV['MONGOLAB_URI'].present?
-  config.db_uri = ENV['MONGOLAB_URI']
+  mongo = ENV['MONGOLAB_URI'].split("?").first
+  config.db_uri = mongo
 else
   config.db_host = 'localhost'
   config.db_port = 27017
