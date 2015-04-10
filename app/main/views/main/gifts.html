@@ -1,0 +1,28 @@
+<:Title>
+  Presentes
+
+<:Body> 
+  <h1>Lista de Presentes</h1>
+
+  <table class="gift-table">
+    {{ _gifts.each do |gift| }}
+      <tr>
+        <td class="{{ if gift._completed }}complete{{ end }}">{{ gift._name }}</td>
+        <td>{{ if gift._completed }} Já vão levar
+          {{ else }}
+          <button e-click="gift_taken(gift)"> Vou levar </button>
+        {{ end }}</td>
+        {{ if Volt.user }}
+        <td><button e-click="remove_gift(gift)">x</button></td>
+        {{ end }}
+      </tr>
+    {{ end }}
+  </table>
+
+
+  <form e-submit="add_gift" role="form">
+    <div class="form-group">
+      <label>Adicionar algum presente:</label>
+      <input class="form-control" type="text" value="{{ _new_gift  }}" placeholder="Algum presente que faltou na lista?" />
+    </div>    
+  </form>
